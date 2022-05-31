@@ -21,7 +21,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 @ExtendWith(SpringExtension.class)
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class UserApiControllerTest {
 
     @LocalServerPort
@@ -52,7 +52,7 @@ public class UserApiControllerTest {
                 .role(Role.USER)
                 .build();
 
-        String url = "http:/localhost:" + port + "/api/v1/user";
+        String url = "http://localhost:" + port + "/api/v1/user";
 
         //when
         ResponseEntity<Long> responseEntity = restTemplate.postForEntity(url, userSaveRequestDto, Long.class);
