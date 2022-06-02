@@ -1,9 +1,14 @@
 'use strict';
 
 let index = {
-    init: function() {
+    init: function () {
         $("#btn-save").on("click", () => { //this를 바인딩하기 위해 화샬표 함수 사용
-            this.save();
+            let form = document.querySelector("#needs-validation");
+            if (form.checkValidity() == false) {
+                console.log("회원가입 안됨")
+            } else {
+                this.save();
+            }
         });
     },
 
