@@ -17,7 +17,7 @@ let index = {
 
         $.ajax({
             type: "POST", //Http method
-            url: "/api/v1/user", //API 주소
+            url: "/auth/api/v1/user", //API 주소
             data: JSON.stringify(data), //JSON으로 변환
             contentType: "application/json; charset=utf-8", //MIME 타입
             dataType: "json" //응답 데이터
