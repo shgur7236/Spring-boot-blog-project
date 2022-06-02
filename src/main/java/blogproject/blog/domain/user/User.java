@@ -18,7 +18,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // PK를 자동으로 생성하고자 할 때 사용용    private Long id; //sequence, auto_increment
     private Long Id;
 
-    @Column(nullable = false, length = 30)
+    @Column(nullable = false, length = 30, unique = true)
     private String username; // 아이디
 
     @Column(nullable = false, length = 100)
@@ -27,7 +27,7 @@ public class User {
     @Column(nullable = false, length = 50)
     private String email;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 20)
     private String nickname; // 닉네임
 
     @Enumerated(EnumType.STRING)
