@@ -44,4 +44,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .defaultSuccessUrl("/"); // 로그인이 성공하면 해당 URL로 이동
 
     }
+
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception{
+        return super.authenticationManagerBean();
+    }
 }
