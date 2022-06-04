@@ -10,8 +10,15 @@ let index = {
                 this.save();
             }
         });
+        $("#btn-update").on("click", () => {
+            let form = document.querySelector("#needs-validation");
+            if (form.checkValidity() == false) {
+                console.log("회원수정 안됨")
+            } else {
+                this.update();
+            }
+        });
     },
-
     save: function() {
         let data = { //JavaScript Object
             username: $("#username").val(),
