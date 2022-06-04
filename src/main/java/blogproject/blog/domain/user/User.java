@@ -37,4 +37,19 @@ public class User {
     public void setPassword(String password){
         this.password = password;
     }
+
+    /**
+     * 권한 메소드
+     */
+    public String getRoleKey(){
+        return this.role.getKey();
+    }
+
+    /**
+     * 회원수정 메소드
+     */
+    public void update(String password, String nickname){
+        this.password = password;
+        this.nickname = nickname;
+    }
 }
