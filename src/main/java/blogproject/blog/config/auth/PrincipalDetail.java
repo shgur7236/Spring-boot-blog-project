@@ -72,4 +72,9 @@ public class PrincipalDetail implements UserDetails {
     public boolean isEnabled() {
         return false;
     }
+
+
+    public void setUser(User userEntity) {
+        userEntity = userEntity;
+    }
 }
