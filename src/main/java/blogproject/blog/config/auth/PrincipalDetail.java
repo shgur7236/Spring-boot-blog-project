@@ -32,7 +32,7 @@ public class PrincipalDetail implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Collection<GrantedAuthority> collection = new ArrayList<>();
-        collection.add(() -> user.getRole().getKey());
+        collection.add(user::getRoleKey);
 
         return collection;
     }
