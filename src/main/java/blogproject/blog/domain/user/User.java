@@ -1,5 +1,6 @@
 package blogproject.blog.domain.user;
 
+import blogproject.blog.domain.BaseTimeEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,7 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class User {
+public class User extends BaseTimeEntity {
 
     @Id // 테이블의 Primary Key(PK)
     @GeneratedValue(strategy = GenerationType.IDENTITY) // PK를 자동으로 생성하고자 할 때 사용용    private Long id; //sequence, auto_increment
