@@ -28,4 +28,12 @@ public class BoardService {
     public List<Board> findAll(){
         return boardRepository.findAll();
     }
+
+    /**
+     * 글상세 로직
+     */
+    @Transactional(readOnly = true)
+    public Board detail(Long id) {
+        return boardRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 id가 없습니다. id=" + id));
+    }
 }
