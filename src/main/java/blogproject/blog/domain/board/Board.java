@@ -1,5 +1,6 @@
 package blogproject.blog.domain.board;
 
+import blogproject.blog.domain.BaseTimeEntity;
 import blogproject.blog.domain.user.User;
 import lombok.*;
 
