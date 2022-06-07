@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link href="starter-template.css" th:href="@{/starter-template.css}" rel="stylesheet">
+    <link href="/starter-template.css" th:href="@{/starter-template.css}" rel="stylesheet">
 
     <title>게시판</title>
 </head>
@@ -35,7 +35,7 @@
 
 <div class="container">
     <h2>게시판</h2>
-</div>
+    <div>총 건수 : <span th:text="${#lists.size(boards)}"></span></div>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
