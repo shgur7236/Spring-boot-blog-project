@@ -1,4 +1,4 @@
-package blogproject.blog.controller.api;
+package blogproject.blog.controller;
 
 import blogproject.blog.model.Board;
 import blogproject.blog.repository.BoardRepository;

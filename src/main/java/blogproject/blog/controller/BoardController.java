@@ -2,12 +2,16 @@ package blogproject.blog.controller;
 
 import blogproject.blog.model.Board;
 import blogproject.blog.repository.BoardRepository;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
 import java.util.List;
 
 
@@ -40,7 +44,10 @@ public class BoardController {
     }
 
     @PostMapping("/form")
-    public String greetingSubmit(@ModelAttribute Board board){
+    public String greetingSubmit(@Valid Board board, BindingResult bindingResult){
+        if (bindingResult.hasErrors()){
+            return "board/form";
+        }
         boardRepository.save(board);
         return "redirect:/board/list";
     }
