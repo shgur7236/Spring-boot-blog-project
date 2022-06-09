@@ -43,6 +43,15 @@
                    th:value="${param.searchText}">
         </div>
         <button type="submit" class="btn btn-light mb-2">검색</button>
+
+    </form>
+    <form class="form-inline d-flex justify-content-end" method="GET" th:action="@{/board/list}">
+        <div>
+            <label for="size" class="sr-only">사이즈</label>
+            <input class="form-control" id="size" name="size" th:value="${param.size}"
+                   type="text">
+        </div>
+        <button type="submit" class="btn btn-light mb-2">사이즈야미</button>
     </form>
     <table class="table table-striped">
         <thead>
