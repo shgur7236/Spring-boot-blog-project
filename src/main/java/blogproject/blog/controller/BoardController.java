@@ -4,6 +4,8 @@ import blogproject.blog.model.Board;
 import blogproject.blog.repository.BoardRepository;
 import blogproject.blog.validator.BoardValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
-import java.util.List;
 
 
 @Controller
@@ -27,8 +28,8 @@ public class BoardController {
     private BoardValidator boardValidator;
 
     @GetMapping("/list")
-    public String list(Model model) {
-        List<Board> boards = boardRepository.findAll();
+    public String list(Model model, Pageable pageable) {
+        Page<Board> boards = boardRepository.findAll(pageable);
         model.addAttribute("boards",boards);
         return "board/list";
     }
