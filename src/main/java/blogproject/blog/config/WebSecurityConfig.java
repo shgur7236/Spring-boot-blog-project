@@ -50,6 +50,7 @@ public  class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                         + "where email = ?");
     }
 
+    // static을 추가
     @Bean
     public static PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
