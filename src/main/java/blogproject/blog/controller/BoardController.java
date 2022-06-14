@@ -60,7 +60,7 @@ public class BoardController {
         }
         return "board/form";
     }
-//
+
     @PostMapping("/form")
     public String postForm(@Valid Board board, BindingResult bindingResult, Authentication authentication){
         boardValidator.validate(board, bindingResult);
@@ -73,3 +73,6 @@ public class BoardController {
         return "redirect:/board/list";
     }
 }
+
+
+//test
