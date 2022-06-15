@@ -1,5 +1,6 @@
 package blogproject.blog.controller;
 
+import blogproject.blog.model.Board;
 import blogproject.blog.model.User;
 import blogproject.blog.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,10 +35,14 @@ class UserApiController {
     @PutMapping("/users/{id}")
     User replaceUser(@RequestBody User newUser, @PathVariable Long id) {
 
-        return repository.findById(id)
+         return repository.findById(id)
                 .map(user -> {
 //                    user.setTitle(newUser.getTitle());
 //                    user.setContent(newUser.getContent());
+                    user.setBoards(newUser.getBoards());
+                    for(Board board: user.getBoards()) {
+                        board.setUser(user);
+                    }
                       return repository.save(user);
 
                 })
