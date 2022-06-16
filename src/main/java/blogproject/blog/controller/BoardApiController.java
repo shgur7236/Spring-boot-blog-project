@@ -4,6 +4,7 @@ import blogproject.blog.model.Board;
 import blogproject.blog.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.util.StringUtils;
 
@@ -52,6 +53,7 @@ public class BoardApiController {
                     });
         }
 
+        @Secured("ROLE_ADMIN")
         @DeleteMapping("/boards/{id}")
         void deleteBoard(@PathVariable Long id){
             repository.deleteById(id);
