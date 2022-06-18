@@ -1,13 +1,14 @@
 package blogproject.blog.controller;
 
 import blogproject.blog.model.Board;
+import blogproject.blog.model.QUser;
 import blogproject.blog.model.User;
 import blogproject.blog.repository.UserRepository;
+import com.querydsl.core.types.Predicate;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -18,14 +19,18 @@ class UserApiController {
     private UserRepository repository;
 
     @GetMapping("/users")
-    List<User> all(@RequestParam(required = false) String method,@RequestParam(required = false)String text) {
-        List<User> users = null;
+    Iterable<User> all(@RequestParam(required = false) String method,@RequestParam(required = false)String text) {
+        Iterable<User> users = null;
         if("query".equals(method)) {
             users = repository.findByUsernameQuery(text);
         }else if("nativeQuery".equals(method)){
             users = repository.findByUsernameNativeQuery(text);
-        }
-        else {
+        } else if("querydsl".equals(method)){
+            QUser user = QUser.user;
+            Predicate predicate = user.username.contains(text);
+
+            users = repository.findAll(predicate);
+        }else {
             users = repository.findAll();
         }
         return users;
